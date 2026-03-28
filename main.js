@@ -36,6 +36,8 @@ let playerchar = 0
 let rabesccd = 0
 let nuecd = 0
 let bigragacd = 0
+let bigragadmgbuff = 0
+let bigragahpbuff = 0
 
 
 function sukunaAttack(name, basedmg) {
@@ -61,7 +63,7 @@ function battleTurn() {
         else alert("Sukuna wins!");
         return;
 }
-
+}
 
 function rabbitEscape() {
     alert("Megumi summoned Rabbit Escape!")
@@ -77,6 +79,22 @@ function rabbitEscape() {
         alert("Rabbit Escape Despawned...")
     }
 }
+
+function nuE() {
+    alert("Megumi summoned Nue!")
+    nuefinldmg = nuemult * nuedmg 
+    for (let i = 0; i < 1; i++) {
+        sukhp-= nuefinldmg
+        alert("Rabbit Escape bit Sukuna and dealt " + nuefinldmg + " damage!")
+    } 
+    nuecd = 5
+    alert("Rabbit Escape dealt " + nuefinldmg + " damage!")
+    if (nuecd <= 0)
+    {
+        alert("Nue Despawned...")
+    }
+}
+
 
 if (rabesccd <= 0)
     {
@@ -94,7 +112,8 @@ if (bigragacd <= 0)
     }
 
 
-function domainClash() {
+function domainClash() 
+{
     if (sukatk = playerchoice)
     {
        domainclash = Math.floor(Math.random() * 2) + 1
@@ -239,28 +258,28 @@ if (playerchar === 2)
 {
     let playerchoice=prompt("Choose Megumi's attack, 1 for Rabbit Escape, 2 for Nue, 3 for Mahoraga, 4 for Domain, 5 for RCT");
 if (playerchoice === "1" && rabesccd === 1) {
-    
+    rabbitEscape()
     alert("Rabbit Escape has 1 cooldown. use Blue to reset")
-    revrdcd = 2
-    lapblucd = 1
-    hpcd = 1
+    rabesccd = 2
+    nuecd = 1
+    bigragacd = 1
     playerdomaintime-= 1
     if (playerdomaintime >= 1)
     {
         alert("Your domain will turn off in " + playerdomaintime + " rounds.")
     }
 }
-else if (playerchoice === "2" && lapblucd === 1 ) 
+else if (playerchoice === "2" && nuecd === 1 ) 
 {
-    playerAttack("Lapse Blue", 15)
-    alert("Lapse Blue is on cooldown. use Red to reset")
-    lapblucd = 2
-    revrdcd = 1
-    if (hpcd === 2)
+    nuE()
+    alert("Nue is on cooldown. summon Rabbit Escape to reset")
+    nuecd = 2
+    rabesccd = 1
+    if (bigragacd === 2)
     {
-        hpcd = 1
+        bigragacd = 1
     }
-    hpcd = 2
+    bigragacd = 2
     playerdomaintime = playerdomaintime - 1
     if (playerdomaintime >= 1)
     {
@@ -268,11 +287,12 @@ else if (playerchoice === "2" && lapblucd === 1 )
     }
 }
      
- else if (playerchoice === "3" && hpcd === 1) 
+ else if (playerchoice === "3" && bigragacd >= 1) 
  {
-     playerAttack("Hollow Purple", 30)
-     alert("Hollow Purple is on cooldown. use Red once or Blue twice to reset")
-     hpcd = 3
+     
+     alert("Mahoraga is on cooldown. summon Rabbit Escape once or Nue twice to reset")
+     bigragacd = 3
+     mahoraga()
      playerdomaintime= playerdomaintime - 1
      if (playerdomaintime >= 1)
     {
@@ -333,7 +353,8 @@ else if (playerchoice === "5" && playerrctusenmbr === 0 || playerchoice === "5" 
 if (playerchar = 1) 
 {
 let playerchoice=prompt("Choose player's attack, 1 for Red, 2 for Blue, 3 for Purple, 4 for Domain, 5 for RCT");
-if (playerchoice === "1" && revrdcd === 1) {
+if (playerchoice === "1" && revrdcd === 1) 
+    {
     playerAttack("Reversal Red", 10)
     alert("Reversal Red has 1 cooldown. use Blue to reset")
     revrdcd = 2

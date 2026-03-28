@@ -2,7 +2,7 @@ if (playerchar === 2)
 {
     let playerchoice=prompt("Choose Megumi's attack, 1 for Rabbit Escape, 2 for Nue, 3 for Mahoraga, 4 for Domain, 5 for RCT");
 if (playerchoice === "1" && rabesccd === 1) {
-    
+    rabbitEscape()
     alert("Rabbit Escape has 1 cooldown. use Blue to reset")
     rabesccd = 2
     nuecd = 1
@@ -15,11 +15,11 @@ if (playerchoice === "1" && rabesccd === 1) {
 }
 else if (playerchoice === "2" && nuecd === 1 ) 
 {
-    playerAttack("Lapse Blue", 15)
-    alert("Lapse Blue is on cooldown. use Red to reset")
+    nuE()
+    alert("Nue is on cooldown. summon Rabbit Escape to reset")
     nuecd = 2
     rabesccd = 1
-    if (hpcd === 2)
+    if (bigragacd === 2)
     {
         bigragacd = 1
     }
@@ -31,11 +31,12 @@ else if (playerchoice === "2" && nuecd === 1 )
     }
 }
      
- else if (playerchoice === "3" && hpcd === 1) 
+ else if (playerchoice === "3" && bigragacd >= 1) 
  {
-     playerAttack("Hollow Purple", 30)
-     alert("Hollow Purple is on cooldown. use Red once or Blue twice to reset")
-     hpcd = 3
+     
+     alert("Mahoraga is on cooldown. summon Rabbit Escape once or Nue twice to reset")
+     bigragacd = 3
+     mahoraga()
      playerdomaintime= playerdomaintime - 1
      if (playerdomaintime >= 1)
     {
